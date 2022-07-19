@@ -1,0 +1,15 @@
+#bookc{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+#buttonadd{
+    position: absolute;
+    bottom: -23px;
+    right: -11px;
+}
+.color{
+    border-color: red;
+}

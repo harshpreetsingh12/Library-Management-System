@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="Container">
+  <div class="container my3">
+    <h2>Update Book Details</h2>
+    <form action="/update/{{lib.sno}}" method="POST">
+        <!-- <div class="mb-3">
+          <label for="newl" class="form-label">Library Name</label>
+          <input type="text" class="form-control" name="newl" value="{{lib.Lname}}" id="newl" aria-describedby="emailHelp">
+          <div id="feed" class="form-text">
+            If you change your library name then this record will be moved to other library records.
+          </div> -->
+          <!-- <div id="emailHelp" class="form-text"></div> -->
+        <!-- </div> -->
+        <div class="mb-3">
+            <label for="newb" class="form-label">Enter Book Name</label>
+            <input type="text" class="form-control" name="newb" id="newb" value="{{lib.bookn}}"  aria-describedby="emailHelp">
+          </div>
+        <div class="mb-3">
+            <label for="newa" class="form-label">Enter Availablilty Details</label>
+            <input type="text" class="form-control" name="newa" id="newa" value="{{lib.avaB}}"  aria-describedby="emailHelp">
+            <div id="feed" class="form-text">
+                If you change your book Availablilty make sure book has been returned or issued successfully.
+              </div> 
+          </div>
+        <!-- <div class="mb-3">
+          <label for="bookn" class="form-label">Number of books by text file</label>
+          <input type="file" class="form-control" name="filen" id="filen" >
+        </div> -->
+        <!-- <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label> 
+        </div> -->
+        <button style=margin-top:10px type="submit" onclick="issuetiming()" class="btn btn-success">Submit</button>
+      </form>
+</div>
+ </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/timing.js') }}"></script>
+     
+{% endblock body %}

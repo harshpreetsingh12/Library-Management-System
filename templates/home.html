@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<div class="container my4" style=max-width:1225px; id="bookc">
+    <h2>Welcome to {{lname}} Library</h2>
+    <h2>Your Books</h2>
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+
+    {% block page_content %}{% endblock %}
+    
+           {% if alllib|length == 0 %} 
+
+           <div class="alert alert-dark" role="alert">
+            No Books in list to show, add your first Book now!
+          </div>
+                {% else %}
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">SNo</th>
+                        <th scope="col">Library</th>
+                        <th scope="col">Book Name</th>
+                        <th scope="col">Availablilty</th>
+                      </tr>
+                  
+           {% endif %}
+            {% for lib in alllib %}
+            <tr>
+                <th scope="row">{{loop.index}}</th>
+                <td>{{lib.Lname}}</td>
+                <td>{{lib.bookn}}</td>
+                <td>{{lib.avaB}}</td>
+                <td>
+                    <a href="/update/{{lib.sno}}"><button type="button" class="btn btn-outline-success btn-sm mx-1">Update</button></a>
+                    <a href="/delete/{{lib.sno}}"><button  type="button" class="btn btn-outline-success btn-sm mx-1">Delete</button></a>
+
+                    
+                    {% if lib.avaB == "Available" %}
+                    <a href="/issue/{{lib.sno}}"><button onclick="" type="button" class="btn btn-outline-success btn-sm mx-1">Issue</button></a>
+                    {% else %}
+                    <a href="/returnn/{{lib.sno}}"><button onclick="" type="button" class="btn btn-outline-success btn-sm mx-1">Return</button></a>
+                    {% endif %}
+
+                  
+                  </td>
+                  <td><span id="days">2d </span><span id="hours">0h </span><span id="mins">0m </span><span id="secs">0s </span><h2 id="end"></h2></td>
+              </tr>
+              
+            </thead>
+            <tbody>
+              <div id="buttonadd">
+                <a href="/addbooks/{{lib.Lname}}"><button onclick="" type="button" class="btn btn-outline-dark btn-sm mx-1">Add Books </button></a>
+            {% endfor %}
+          
+        </tbody>
+      </table>
+     
+      </div>
+</div>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>    
+
+{% endblock body %}
+
+  
